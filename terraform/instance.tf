@@ -1,6 +1,30 @@
 resource "macaddress" "instance_net0_mac" {
 }
 
+resource "consul_node" "consul_node_dns" {
+  address = cidrhost(var.net0_network_cidr, local.ip_offset)
+  name    = local.instance_name
+  meta = {
+    "external-node" : "true",
+    "external-probe" : "true"
+  }
+}
+
+resource "consul_service" "consul_service_ssh" {
+  name    = "${local.instance_name}-ssh"
+  address = cidrhost(var.net0_network_cidr, local.ip_offset)
+  node    = consul_node.consul_node_dns.name
+  port    = 22
+
+  check {
+    check_id = "${local.instance_name}:ssh"
+    name     = "SSH TCP on port 22"
+    tcp      = "${cidrhost(var.net0_network_cidr, local.ip_offset)}:22"
+    interval = "10s"
+    timeout  = "2s"
+  }
+}
+
 module "instance_cloudinit_template" {
   source = "github.com/glitchcrab/terraform-module-proxmox-cloudinit-template"
 

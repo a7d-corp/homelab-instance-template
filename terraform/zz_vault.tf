@@ -10,3 +10,6 @@ data "vault_generic_secret" "terraform_generic" {
   path = "proxmox/terraform-pve-config"
 }
 
+data "vault_generic_secret" "terraform_consul" {
+  path = "proxmox/terraform-consul"
+}
