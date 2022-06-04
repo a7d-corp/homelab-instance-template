@@ -6,6 +6,10 @@ data "vault_generic_secret" "terraform_pve_ssh" {
   path = "proxmox/terraform-pve-ssh"
 }
 
+data "vault_generic_secret" "terraform_ssh_key" {
+  path = "proxmox/terraform-ssh-key"
+}
+
 data "vault_generic_secret" "terraform_generic" {
   path = "proxmox/terraform-pve-config"
 }
