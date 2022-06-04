@@ -18,6 +18,10 @@ resource_memory      = 2048
 # network config
 network_model = "virtio"
 
+# cloudinit network config
+search_domains = [] # CHANGEME
+dns_servers    = [] # CHANGEME
+
 # primary nic config
 net0_network_bridge  = "vmbr0"
 net0_vlan_tag        = 1001

@@ -59,6 +59,16 @@ variable "connection_type" {
   description = "Connection type to provision cloudinit file over."
 }
 
+variable "search_domains" {
+  type        = list(string)
+  description = "List of DNS search domains to pass via cloudinit."
+}
+
+variable "dns_servers" {
+  type        = list(string)
+  description = "List of DNS servers to pass via cloudinit."
+}
+
 # instance configuration
 
 variable "instance_domain" {
