@@ -59,7 +59,22 @@ variable "connection_type" {
   description = "Connection type to provision cloudinit file over."
 }
 
+variable "search_domains" {
+  type        = list(string)
+  description = "List of DNS search domains to pass via cloudinit."
+}
+
+variable "dns_servers" {
+  type        = list(string)
+  description = "List of DNS servers to pass via cloudinit."
+}
+
 # instance configuration
+
+variable "instance_description" {
+  type        = string
+  description = "Description of the instance's purpose."
+}
 
 variable "instance_domain" {
   type        = string
@@ -121,6 +136,22 @@ variable "network_bridge" {
   type        = string
   default     = "vmbr0"
   description = ""
+}
+
+variable "primary_disk_type" {
+  type        = string
+  default     = "scsi"
+  description = "Primary disk emulation type."
+}
+
+variable "primary_disk_location" {
+  type        = string
+  description = "PVE storage pool for the instance's primary disk."
+}
+
+variable "primary_disk_size" {
+  type        = string
+  description = "Capacity of the instance's primary disk."
 }
 
 variable "os_type" {
