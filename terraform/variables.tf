@@ -138,6 +138,22 @@ variable "network_bridge" {
   description = ""
 }
 
+variable "primary_disk_type" {
+  type        = string
+  default     = "scsi"
+  description = "Primary disk emulation type."
+}
+
+variable "primary_disk_location" {
+  type        = string
+  description = "PVE storage pool for the instance's primary disk."
+}
+
+variable "primary_disk_size" {
+  type        = string
+  description = "Capacity of the instance's primary disk."
+}
+
 variable "os_type" {
   type        = string
   default     = "cloud-init"
