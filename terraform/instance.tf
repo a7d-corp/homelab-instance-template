@@ -17,11 +17,12 @@ resource "consul_service" "consul_service_ssh" {
   port    = 22
 
   check {
-    check_id = "${local.instance_name}:ssh"
-    name     = "SSH TCP on port 22"
-    tcp      = "${cidrhost(var.net0_network_cidr, local.ip_offset)}:22"
-    interval = "10s"
-    timeout  = "2s"
+    check_id                          = "${local.instance_name}:ssh"
+    name                              = "SSH TCP on port 22"
+    tcp                               = "${cidrhost(var.net0_network_cidr, local.ip_offset)}:22"
+    interval                          = "10s"
+    timeout                           = "5s"
+    deregister_critical_service_after = "300s"
   }
 }
 
