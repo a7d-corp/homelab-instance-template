@@ -49,9 +49,9 @@ module "instance_cloudinit_template" {
   search_domains = var.search_domains
   dns_servers    = var.dns_servers
 
-  user_data_blob = {
+  user_data_blob = yamlencode({
     hostname : "${local.instance_name}.${var.instance_domain}"
-  }
+  })
 }
 
 module "instance" {
