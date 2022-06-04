@@ -59,7 +59,7 @@ module "instance" {
   depends_on = [module.instance_cloudinit_template]
 
   pve_instance_name        = "${local.instance_name}.${var.instance_domain}"
-  pve_instance_description = "instance for internal infra management"
+  pve_instance_description = var.instance_description
   vmid                     = local.vmid
 
   clone      = var.clone

@@ -71,6 +71,11 @@ variable "dns_servers" {
 
 # instance configuration
 
+variable "instance_description" {
+  type        = string
+  description = "Description of the instance's purpose."
+}
+
 variable "instance_domain" {
   type        = string
   description = ""
